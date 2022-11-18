@@ -34,3 +34,23 @@ def get_sets_in_collection(request, username):
             except Collection.DoesNotExist:
                 serializer.save(user=request.user)
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+@api_view(['PATCH', 'DELETE'])
+@ permission_classes([IsAuthenticated])
+def get_a_set(request, username, setnum):
+
+    try:
+        set = Collection.objects.filter(user_id=request.user.id).get(
+            set_num=setnum)
+        if request.method == 'PATCH':
+            serializer = ColletionSerializer(
+                set, data=request.data, partial=True)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        elif request.method == 'DELETE':
+            set.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+    except Collection.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
