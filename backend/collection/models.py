@@ -13,4 +13,5 @@ class Collection(models.Model):
     minifigs_num = models.IntegerField()
     set_img_url = models.CharField(max_length=100)
     purchase_date = models.DateField()
-    build_completion_date = models.DateField(blank=True, default=None)
+    # build_completion_date can be null when adding a set into the database
+    build_completion_date = models.DateField(blank=True, null=True)
