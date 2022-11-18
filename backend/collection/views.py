@@ -9,23 +9,28 @@ from collection.serializer import ColletionSerializer
 
 @api_view(['GET', 'POST'])
 @ permission_classes([IsAuthenticated])
-def get_sets_in_collection(requst, username):
-    if requst.method == 'GET':
+def get_sets_in_collection(request, username):
+    sets = Collection.objects.filter(user_id=request.user.id)
+    if request.method == 'GET':
         # GET request: get lego sets infor in collection model for logged in user
         # example url: http://127.0.0.1:8000/testuser/collection
         # get all the sets in the collection model that belongs to loggined user
-        sets = Collection.objects.filter(user_id=requst.user.id)
         try:
             serializer = ColletionSerializer(sets, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Collection.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
-    elif requst.method == 'POST':
+    elif request.method == 'POST':
         # POST request: allow logged in user to add a set to his/her collection
         # example url: http://127.0.0.1:8000/testuser/collection
-        serializer = ColletionSerializer(data=requst.data)
+        serializer = ColletionSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save(user=requst.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            # if the set has already exist in the user's collection will not save it and return status code 409
+            # otherwise save it into the database
+            # # print(request.data.get('set_num'))
+            try:
+                if (sets.get(set_num=request.data.get('set_num'))):
+                    return Response(status=status.HTTP_409_CONFLICT)
+            except Collection.DoesNotExist:
+                serializer.save(user=request.user)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
