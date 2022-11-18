@@ -10,6 +10,7 @@ class Collection(models.Model):
     release_year = models.IntegerField()
     theme = models.CharField(max_length=100)
     num_parts = models.IntegerField()
+    minifigs_num = models.IntegerField()
     set_img_url = models.CharField(max_length=100)
     purchase_date = models.DateField()
     build_completion_date = models.DateField(blank=True, default=None)
