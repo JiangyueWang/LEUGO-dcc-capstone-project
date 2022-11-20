@@ -16,17 +16,19 @@ def get_sets_in_collection(request, username):
 
     if (sum_type_param):
         if sum_type_param == 'num_parts':
+            # getting total number of parts of logged in user built
             sum_num_parts_obj = {}
             sum_num_parts = sets.aggregate(Sum('num_parts'))
             sum_num_parts_obj['total_num_parts'] = sum_num_parts
             return Response(sum_num_parts_obj)
         elif sum_type_param == 'minifigs':
+            # getting total number of minifigs of logged in user
             sum_minifigs_obj = {}
             sum_minifigs = sets.aggregate(Sum('minifigs_num'))
             sum_minifigs_obj['minifigs'] = sum_minifigs
             return Response(sum_minifigs_obj)
         elif sum_type_param == 'theme':
-
+            # getting number of sets logged in user owned
             sum_sets_by_theme = sets.values(
                 'theme').annotate(count=Count('theme'))
 
@@ -45,7 +47,7 @@ def get_sets_in_collection(request, username):
     else:
         if request.method == 'GET':
             # GET request: get lego sets infor in collection model for logged in user
-            # example url: http://127.0.0.1:8000/testuser/collection
+            # example url: http://127.0.0.1:8000/{username}/collection
             # get all the sets in the collection model that belongs to loggined user
             try:
                 serializer = ColletionSerializer(sets, many=True)
@@ -54,7 +56,7 @@ def get_sets_in_collection(request, username):
                 return Response(status=status.HTTP_404_NOT_FOUND)
         elif request.method == 'POST':
             # POST request: allow logged in user to add a set to his/her collection
-            # example url: http://127.0.0.1:8000/testuser/collection
+            # example url: http://127.0.0.1:8000/{username}/collection
             serializer = ColletionSerializer(data=request.data)
             if serializer.is_valid():
                 # if the set has already exist in the user's collection will not save it and return status code 409
@@ -76,6 +78,8 @@ def get_a_set(request, username, setnum):
         set = Collection.objects.filter(user_id=request.user.id).get(
             set_num=setnum)
         if request.method == 'PATCH':
+            # PATCH request: allow loggin user to update partial information about sets in their collection
+            # example url: http://127.0.0.1:8000/{username}/collection/{set_num}
             serializer = ColletionSerializer(
                 set, data=request.data, partial=True)
             serializer.is_valid(raise_exception=True)
