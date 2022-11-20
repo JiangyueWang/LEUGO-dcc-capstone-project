@@ -16,6 +16,11 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
+          <Link to={`${user.username}/collection`}>
+            <b>MyCollection</b>
+          </Link>
+        </li>
+        <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>
           ) : (
