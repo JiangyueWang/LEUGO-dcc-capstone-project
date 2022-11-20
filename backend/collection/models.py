@@ -23,3 +23,4 @@ class Wishlist(models.Model):
     set_name = models.CharField(max_length=100)
     release_year = models.IntegerField()
     theme = models.CharField(max_length=100)
+    set_img_url = models.CharField(max_length=100)
