@@ -5,6 +5,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from collection.models import Collection
 from collection.serializer import ColletionSerializer
+from collection.models import Wishlist
+from collection.serializer import WishlistSerializer
 # Create your views here.
 
 
@@ -90,3 +92,42 @@ def get_a_set(request, username, setnum):
             return Response(status=status.HTTP_204_NO_CONTENT)
     except Collection.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(['GET', 'POST'])
+@ permission_classes([IsAuthenticated])
+def get_sets_in_wishlist(request, username):
+    sets = Wishlist.objects.filter(user_id=request.user.id)
+    if request.method == 'GET':
+        # GET request: get lego sets infor in wishlist model for logged in user
+        # example url: http://127.0.0.1:8000/{username}/wishlist
+        # get all the sets in the wishlist model that belongs to loggined user
+        try:
+            serializer = WishlistSerializer(sets, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Wishlist.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+    elif request.method == 'POST':
+        # POST request: allow logged in user to add a set to his/her wishlist
+        # example url: http://127.0.0.1:8000/{username}/wishlist
+        serializer = WishlistSerializer(data=request.data)
+        if serializer.is_valid():
+            # if the set has already exist in the user's wishlist will not save it and return status code 409
+            # otherwise save it into the database
+            # # print(request.data.get('set_num'))
+            try:
+                if (sets.get(set_num=request.data.get('set_num'))):
+                    return Response(status=status.HTTP_409_CONFLICT)
+            except Wishlist.DoesNotExist:
+                serializer.save(user=request.user)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+@api_view(['DELETE'])
+@ permission_classes([IsAuthenticated])
+def get_a_set_in_wishlist(request, username, setnum):
+    set = Wishlist.objects.filter(user_id=request.user.id).get(
+        set_num=setnum)
+    if request.method == 'DELETE':
+        set.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
