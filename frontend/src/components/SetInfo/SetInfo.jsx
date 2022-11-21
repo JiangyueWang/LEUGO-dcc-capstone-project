@@ -21,7 +21,12 @@ const SetInfo  = (props) => {
                                 setTheme = {props.set.theme}
                                 setPurchaseDate = {props.set.purchase_date}
                                 setBuildCompletionDate = {props.set.build_completion_date}
-                                showModal={setShowModal} showModalValue={showModal}/>
+                                showModal={setShowModal} showModalValue={showModal}
+                                username={props.username}
+                                usertoken={props.usertoken}
+                                fetchSetsInCollection={props.fetchSetsInCollection}
+
+                />
                }  
 
             </div>

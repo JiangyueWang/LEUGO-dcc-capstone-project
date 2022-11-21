@@ -7,7 +7,7 @@ const DisplaySetsInCollection = (props) => {
             {props.setSetsinCollection.map((set) => {
                 return (
                     <div>
-                        <SetInfo set={set}/>
+                        <SetInfo set={set}  key={set.id} username={props.username} usertoken={props.usertoken} fetchSetsInCollection={props.fetchSetsInCollection}/>
                     </div>
                 )
             })}
