@@ -6,10 +6,12 @@ import DisplaySetsInCollection from '../../components/DisplaySetsInCollection/Di
 
 const MyCollection = () => {
     const [user, token] = useAuth();
+ 
+    // declated setInCollection state variable to store sets data from the database
     const [setsInCollection, setSetsinCollection] = useState()
 
     const fetchSetsInCollection = async () => {
-        // fetch all the sets in the collection table from the database that belongs to loggin user
+        // fetch all the sets' information in the collection table from the database that belongs to loggin user
         const getSetsinCollectionUrl = `http://127.0.0.1:8000/${user.username}/collection/`;
         try {
             let response = await axios.get(`${getSetsinCollectionUrl}`, {
@@ -17,7 +19,8 @@ const MyCollection = () => {
                     Authorization: "Bearer " + token,
                   }, 
             });
-            setSetsinCollection(response.data);
+            //function setSetsinCollection updates the setsInCollection state variable with all sets information fetched from database
+            setSetsinCollection(() => response.data);
         } catch (error) {
             console.log(error.response.data)
         }
@@ -25,12 +28,12 @@ const MyCollection = () => {
     useEffect(() => {
         fetchSetsInCollection();
       }, []);
-    
-    console.log(setsInCollection)
+
     return (
     <div>
         {setsInCollection && <DisplaySetsInCollection  setSetsinCollection={setsInCollection}/>}
-    </div>);
+    </div>
+    );
 }
  
 export default MyCollection;
