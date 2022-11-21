@@ -13,7 +13,7 @@ from collection.serializer import WishlistSerializer
 @api_view(['GET', 'POST'])
 @ permission_classes([IsAuthenticated])
 def get_sets_in_collection(request, username):
-    sets = Collection.objects.filter(user_id=request.user.id)
+    sets = Collection.objects.filter(user_id=request.user.id).order_by("-id")
     sum_type_param = request.query_params.get('sum')
 
     if (sum_type_param):
@@ -97,7 +97,7 @@ def get_a_set(request, username, setnum):
 @api_view(['GET', 'POST'])
 @ permission_classes([IsAuthenticated])
 def get_sets_in_wishlist(request, username):
-    sets = Wishlist.objects.filter(user_id=request.user.id)
+    sets = Wishlist.objects.filter(user_id=request.user.id).order_by("-id")
     if request.method == 'GET':
         # GET request: get lego sets infor in wishlist model for logged in user
         # example url: http://127.0.0.1:8000/{username}/wishlist
