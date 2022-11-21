@@ -21,6 +21,11 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
+          <Link to={`${user.username}/wishlist`}>
+            <b>Wish List</b>
+          </Link>
+        </li>
+        <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>
           ) : (

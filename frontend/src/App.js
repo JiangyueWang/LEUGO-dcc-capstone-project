@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import MyCollection from "./pages/MyCollectionPage/MyCollectionPage";
+import WishList from "./pages/WishList/WishList";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -31,6 +32,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path=":username/collection" element={<MyCollection />}></Route>
+        <Route path=":username/wishlist" element={<WishList />}></Route>
       </Routes>
       <Footer />
     </div>
