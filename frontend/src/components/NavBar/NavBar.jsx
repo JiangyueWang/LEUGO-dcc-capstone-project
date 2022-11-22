@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+import SearchSetForm from "../SearchSetForm/SearchSetForm";
 import "./NavBar.css";
 
 const Navbar = () => {
   const { logoutUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [isSearchClicked, setIsSearchClicked] = useState({text: "search", isClicked: false});
+
+  const searchIsClick = (search) => {
+    const updatedSearchValue = {
+      text: "",
+      isClicked: !search.isClicked
+    }
+    return updatedSearchValue;
+  }
+
   return (
     <div className="navBar">
       <ul>
@@ -15,7 +26,12 @@ const Navbar = () => {
             <b>Logo</b>
           </Link>
         </li>
-
+        <li>
+          <span onClick={() => {setIsSearchClicked(searchIsClick(isSearchClicked))}}>{isSearchClicked.text}</span>
+          {
+            isSearchClicked.isClicked && <SearchSetForm setSearchIsClicked={setIsSearchClicked}/>
+          }
+        </li>
           {
             user && (
                     <li>

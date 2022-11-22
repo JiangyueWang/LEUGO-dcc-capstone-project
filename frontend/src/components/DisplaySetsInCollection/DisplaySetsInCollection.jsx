@@ -1,6 +1,8 @@
 import React from 'react';
 import SetInfo from '../SetInfo/SetInfo';
-
+/*
+DisplaySetsInCollection component passes data of sets from backend into map function, passes into SetInfo component 
+*/
 const DisplaySetsInCollection = (props) => {
     return ( 
     <div>
