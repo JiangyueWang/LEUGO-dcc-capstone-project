@@ -15,16 +15,27 @@ const Navbar = () => {
             <b>React/Django JWT</b>
           </Link>
         </li>
-        <li>
-          <Link to={`${user.username}/collection`}>
-            <b>MyCollection</b>
-          </Link>
-        </li>
-        <li>
-          <Link to={`${user.username}/wishlist`}>
-            <b>Wish List</b>
-          </Link>
-        </li>
+
+          {
+            user && (
+                    <li>
+                      <Link to={`${user.username}/collection`}>
+                        <b>MyCollection</b>
+                      </Link>
+                    </li>
+                    )
+            }
+
+            {
+            user && (
+                    <li>
+                      <Link to={`${user.username}/wishlist`}>
+                        <b>Wish List</b>
+                      </Link>
+                    </li>
+                    )
+            }
+
         <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>
