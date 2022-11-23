@@ -28,7 +28,7 @@ const MyCollection = () => {
     useEffect(() => {
         fetchSetsInCollection();
       }, []);
-      console.log(token)
+
     return (
     <div>
         {setsInCollection && <DisplaySetsInCollection  setSetsinCollection={setsInCollection} username={user.username} usertoken={token} fetchSetsInCollection={fetchSetsInCollection}/>}

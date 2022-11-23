@@ -27,9 +27,10 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <span onClick={() => {setIsSearchClicked(searchIsClick(isSearchClicked))}}>{isSearchClicked.text}</span>
+
+          {!isSearchClicked.isClicked && <button onClick={() => {setIsSearchClicked(searchIsClick(isSearchClicked))}}>{isSearchClicked.text}</button>}
           {
-            isSearchClicked.isClicked && <SearchSetForm setSearchIsClicked={setIsSearchClicked}/>
+            isSearchClicked.isClicked && <SearchSetForm setSearchIsClicked={setIsSearchClicked} />
           }
         </li>
           {
