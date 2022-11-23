@@ -8,19 +8,37 @@ const SearchResultsPage = (props) => {
     const APIKEY = `25b99659e1195c90ddfc10b563ba266c`;
 
 
-    // const [searchParams] = useSearchParams();
-    // const valueForSearch = searchParams.get('q');
+    const [searchParams] = useSearchParams();
     
-    const location = useLocation();
+
+    let typeForSearch = '';
+    let valueForSearch = ''
+
+    const valueForSearchNameTemp = searchParams.get('name');
+    const valueForSearchNumTemp = searchParams.get('num');
+    const valueForSearchThemeTemp = searchParams.get('theme');
+
     
-    const typeForSearch = location.state.typeForSearch;
-    const valueForSearch = location.state.valueForSearch;
-  
+    if(valueForSearchNumTemp===null && valueForSearchThemeTemp===null) {
+        typeForSearch = 'name';
+        valueForSearch = searchParams.get('name');
+
+    } else if (valueForSearchNameTemp===null && valueForSearchThemeTemp) {
+        typeForSearch = 'num';
+        valueForSearch = searchParams.get('num');
+    } else {
+        typeForSearch = 'theme';
+        valueForSearch = searchParams.get('theme');
+    }
+        // const location = useLocation();
+    
+    // const typeForSearch = location.state.typeForSearch;
+    // const valueForSearch = location.state.valueForSearch;
 
 
     const [searchResults, setSearchResults] = useState();
     
-    const [allThemes, setAllThemes] = useState();
+    // const [allThemes, setAllThemes] = useState();
 
     const fetchSearchResults = async () => {
        
@@ -37,6 +55,8 @@ const SearchResultsPage = (props) => {
             }
 
         }
+
+
         // else if(typeForSearch === 'num') {
         //     console.log("searching for item number....")
         //     try {
@@ -53,9 +73,7 @@ const SearchResultsPage = (props) => {
   
         // }
 
-        console.log(`typeForSearch ${typeForSearch}`)
-        console.log(`valueForSearch ${valueForSearch}`)
-        console.log(searchResults)
+
         
                     
         // get all the themes
@@ -73,6 +91,9 @@ const SearchResultsPage = (props) => {
     } 
     useEffect(() => {
         fetchSearchResults();
+        console.log(`typeForSearch ${typeForSearch}`)
+        console.log(`valueForSearch ${valueForSearch}`)
+        console.log(`searchResults ${JSON.stringify(searchResults)}`)
     }, [valueForSearch]);
 
 
