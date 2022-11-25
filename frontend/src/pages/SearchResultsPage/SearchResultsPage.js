@@ -1,18 +1,16 @@
 import axios from 'axios';
 import { React, useEffect, useState } from 'react';
-import { useSearchParams, useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import DisplaySearchResults from '../../components/SearchResultsPageComponents/DisplaySearchResults/DisplaySearchResults';
 
 const SearchResultsPage = (props) => {
     // this is the API key to read data from Rebriable database
     const APIKEY = `25b99659e1195c90ddfc10b563ba266c`;
 
-
-    const [searchParams] = useSearchParams();
-    
+    const [searchParams, setSearchParams] = useSearchParams();
 
     let typeForSearch = '';
-    let valueForSearch = ''
+    let valueForSearch = '';
 
     const valueForSearchNameTemp = searchParams.get('name');
     const valueForSearchNumTemp = searchParams.get('num');
@@ -23,87 +21,127 @@ const SearchResultsPage = (props) => {
         typeForSearch = 'name';
         valueForSearch = searchParams.get('name');
 
-    } else if (valueForSearchNameTemp===null && valueForSearchThemeTemp) {
+    } else if (valueForSearchNameTemp===null && valueForSearchThemeTemp===null) {
         typeForSearch = 'num';
         valueForSearch = searchParams.get('num');
     } else {
         typeForSearch = 'theme';
         valueForSearch = searchParams.get('theme');
     }
-        // const location = useLocation();
-    
-    // const typeForSearch = location.state.typeForSearch;
-    // const valueForSearch = location.state.valueForSearch;
-
 
     const [searchResults, setSearchResults] = useState();
-    
-    // const [allThemes, setAllThemes] = useState();
+    const [searchResultFiltered, setSearchResultFiltered] = useState();
 
-    const fetchSearchResults = async () => {
-       
-        if(typeForSearch === 'name') {
+    const searchResultSetter = (searchResult) => {
+        setSearchResults(searchResult);
+    }
+
+    const fetchSearchResultsForNameSearch = async () => {
             try {
             let response = await axios.get(`https://rebrickable.com/api/v3/lego/sets/?ordering=-year&search=${valueForSearch}`, {
                 headers: {
                     Authorization: `key ${APIKEY}`,
                 },
             });
-            setSearchResults(response.data.results);
+            searchResultSetter(response.data.results);
+            // setSearchResultFiltered(response.data.results);
             } catch (error) {
                 console.log(error.response.data);
             }
 
+    }
+
+    const fetchSearchResultsForNumberSearch = async () => {
+            try {
+                let response = await axios.get(`https://rebrickable.com/api/v3/lego/sets/${valueForSearch}-1/`, {
+                    headers: {
+                        Authorization: `key ${APIKEY}`,
+                    },
+                });
+                searchResultSetter(response.data);
+                // setSearchResultFiltered(response.data);
+            } catch (error) {
+                    console.log(error.response.data);
+                }
+    }
+
+    const [themeSets, setThemeSets] = useState();
+    const themeSetsSetter = (themeSets) => {
+        setThemeSets(themeSets)
+    }
+
+    const fetechAllThemes = async () => {
+        try {
+            let response = await axios.get(`https://rebrickable.com/api/v3/lego/themes/`, {
+                headers: {
+                    Authorization: `key ${APIKEY}`,
+                },
+            });
+            searchResultSetter(response.data.results);
+            } catch (error) {
+                console.log(error.response.data);
+            }
+    }
+
+    const fetchSetsForSearchedTheme = async (themeId) => {
+        console.log(`themeId In fetch request ${themeId}`)
+        try {
+            let response = await axios.get(`https://rebrickable.com/api/v3/lego/sets/?theme_id=${themeId}&ordering=-year`, {
+                headers: {
+                    Authorization: `key ${APIKEY}`,
+                },
+            });
+            themeSetsSetter(response.data.results);
+            } catch (error) {
+                console.log(error.response.data);
+            }
+            console.log(themeSets)
+    }
+    
+    useEffect(() => {
+        if (typeForSearch === 'name') {
+            fetchSearchResultsForNameSearch();
+     
+        } else if (typeForSearch === 'num') {
+            fetchSearchResultsForNumberSearch();
+  
+        } else if (typeForSearch === 'theme') { 
+            fetechAllThemes();
+ 
+        }
+        console.log(searchResults)
+        console.log(searchResultFiltered)
+    
+    }, [valueForSearch]);
+
+    useEffect(() => {
+        if(searchResults) {
+            if (typeForSearch === 'name') {
+                const filteredResults = searchResults.filter(result => result.num_parts !== 0 )
+                setSearchResultFiltered(filteredResults)  
+            } else if (typeForSearch === 'theme') {
+                const filteredResults = searchResults.filter(result => result.name === `${valueForSearch}`)
+                setSearchResultFiltered(filteredResults)
+                const themeId = filteredResults[0].id;
+                fetchSetsForSearchedTheme(themeId);
+
+            } else {
+                setSearchResultFiltered(searchResults) 
+            }
+            
+        } else {
+            return;
         }
 
-
-        // else if(typeForSearch === 'num') {
-        //     console.log("searching for item number....")
-        //     try {
-        //         let response = await axios.get(`https://rebrickable.com/api/v3/lego/sets/76903-1/`, {
-        //             headers: {
-        //                 Authorization: `key ${APIKEY}`,
-        //             },
-        //         });
-        //         setSearchResults(response);
-        //         console.log(searchResults)
-        //         } catch (error) {
-        //             console.log(error.response.data);
-        //         }
-  
-        // }
-
-
-        
-                    
-        // get all the themes
-        // try {
-        //     let response_all_themes = await axios.get(`https://rebrickable.com/api/v3/lego/themes/`, {
-        //         headers: {
-        //             Authorization: `key ${APIKEY}`,
-        //         },
-        //     });
-        //     setAllThemes(response_all_themes.data.results);
-        // } catch (error) {
-        //     console.log(error.response.data);
-        // }
-
-    } 
-    useEffect(() => {
-        fetchSearchResults();
-        console.log(`typeForSearch ${typeForSearch}`)
-        console.log(`valueForSearch ${valueForSearch}`)
-        console.log(`searchResults ${JSON.stringify(searchResults)}`)
-    }, [valueForSearch]);
+    }, [searchResults])
 
 
     return ( 
     <div>
         <h1>{`search results for "${valueForSearch}"`}</h1> 
+        {(searchResultFiltered && typeForSearch!=='theme') && <DisplaySearchResults results={searchResultFiltered} searchType={typeForSearch}/>}  
+        {(searchResultFiltered && typeForSearch==='theme' && themeSets) && <DisplaySearchResults results={themeSets} searchType={typeForSearch}/>}  
 
-
-        {searchResults && <DisplaySearchResults results={searchResults} />}  
-        
     </div>);
 }
  
