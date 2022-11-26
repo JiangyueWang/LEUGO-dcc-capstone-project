@@ -7,6 +7,7 @@ const SearchResultsPage = (props) => {
     // this is the API key to read data from Rebriable database
     const APIKEY = `25b99659e1195c90ddfc10b563ba266c`;
 
+    // declare a searchParams state variable to get the value of URL params keys
     const [searchParams, setSearchParams] = useSearchParams();
 
     let typeForSearch = '';
@@ -16,7 +17,7 @@ const SearchResultsPage = (props) => {
     const valueForSearchNumTemp = searchParams.get('num');
     const valueForSearchThemeTemp = searchParams.get('theme');
 
-    
+    // identify typeForSearch and valueForSearch thats on URL params
     if(valueForSearchNumTemp===null && valueForSearchThemeTemp===null) {
         typeForSearch = 'name';
         valueForSearch = searchParams.get('name');
@@ -37,6 +38,7 @@ const SearchResultsPage = (props) => {
     }
 
     const fetchSearchResultsForNameSearch = async () => {
+        // declare the async funtion to fetch data from Rebricble database if the user search by sets' name
             try {
             let response = await axios.get(`https://rebrickable.com/api/v3/lego/sets/?ordering=-year&search=${valueForSearch}`, {
                 headers: {
@@ -44,7 +46,6 @@ const SearchResultsPage = (props) => {
                 },
             });
             searchResultSetter(response.data.results);
-            // setSearchResultFiltered(response.data.results);
             } catch (error) {
                 console.log(error.response.data);
             }
@@ -52,6 +53,7 @@ const SearchResultsPage = (props) => {
     }
 
     const fetchSearchResultsForNumberSearch = async () => {
+         // declare the async funtion to fetch data from Rebricble database if the user search by sets' number
             try {
                 let response = await axios.get(`https://rebrickable.com/api/v3/lego/sets/${valueForSearch}-1/`, {
                     headers: {
@@ -59,7 +61,6 @@ const SearchResultsPage = (props) => {
                     },
                 });
                 searchResultSetter(response.data);
-                // setSearchResultFiltered(response.data);
             } catch (error) {
                     console.log(error.response.data);
                 }
@@ -71,6 +72,7 @@ const SearchResultsPage = (props) => {
     }
 
     const fetechAllThemes = async () => {
+         // declare the async funtion to fetch all the the theme data from Rebricble database 
         try {
             let response = await axios.get(`https://rebrickable.com/api/v3/lego/themes/`, {
                 headers: {
@@ -84,7 +86,8 @@ const SearchResultsPage = (props) => {
     }
 
     const fetchSetsForSearchedTheme = async (themeId) => {
-        console.log(`themeId In fetch request ${themeId}`)
+        // console.log(`themeId In fetch request ${themeId}`)
+        // declare the async funtion to fetch all sets data that matches to the themeId it passes through
         try {
             let response = await axios.get(`https://rebrickable.com/api/v3/lego/sets/?theme_id=${themeId}&ordering=-year`, {
                 headers: {
@@ -95,7 +98,7 @@ const SearchResultsPage = (props) => {
             } catch (error) {
                 console.log(error.response.data);
             }
-            console.log(themeSets)
+            // console.log(themeSets)
     }
     
     useEffect(() => {
@@ -109,8 +112,8 @@ const SearchResultsPage = (props) => {
             fetechAllThemes();
  
         }
-        console.log(searchResults)
-        console.log(searchResultFiltered)
+        // console.log(searchResults)
+        // console.log(searchResultFiltered)
     
     }, [valueForSearch]);
 
