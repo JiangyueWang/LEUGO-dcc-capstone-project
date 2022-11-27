@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import SearchResultsInfo from '../SearchResultsInfo/SearchResultsInfo';
 import axios from 'axios';
-
 const DisplaySearchResults = (props) => {
 
     if (props.searchType === 'name') {
@@ -10,10 +9,17 @@ const DisplaySearchResults = (props) => {
                 {
                     props.results.map ((result) => {
                     return (
-                        <SearchResultsInfo set={result} />
+                        <div>
+
+                            <div>
+                                <SearchResultsInfo set={result} />
+                            </div>
+                            
+                        </div>
+
                         
                     )
-                })}
+                })}:()
             </div>
             
             );
