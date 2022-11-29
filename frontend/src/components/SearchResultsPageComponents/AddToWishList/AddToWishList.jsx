@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import useAuth from "../../../hooks/useAuth";
 import axios from 'axios';
 /*
@@ -12,40 +12,28 @@ const AddToWishList = (props) => {
      // this is the API key to read data from Rebriable database
      const APIKEY = `25b99659e1195c90ddfc10b563ba266c`;
 
-    //const [themeName, setThemeName] = useState();
-    const [setInfo, setSetInfo] = useState({});
+    const reference = useRef();
 
-    // const themeNameSetter = (themeName) => {
-    //     setThemeName(themeName);
-    // }
-    const setInfoSetter = (themeName) => {
-        setSetInfo({
-            "set_num": props.selectedSetNumber,
-            "set_name": props.selectedSetName,
-            "release_year": props.releaseYear,
-            "theme": themeName,
-            "set_img_url":props.setImgUrl,
-        })
-    }
-
-    const fetchThemeName = async (themeId) => {
+    const addSetToWishList = async (themeId) => {
         try {
             let response = await axios.get(`https://rebrickable.com/api/v3/lego/themes/${themeId}`, {
                 headers: {
                     Authorization: `key ${APIKEY}`,
                 },
             });
-            setInfoSetter(response.data.name)
+            reference.current = response.data.name;
             } catch (error) {
                 console.log(error.response.data);
             }
-    }
-
-    
-    
-    const addSetToWishList = async () => {
-        // fetchThemeName(props.themeId);
-        // console.log(setInfo);
+ 
+        const setInfo = {
+            "set_num": props.selectedSetNumber,
+            "set_name": props.selectedSetName,
+            "release_year": props.releaseYear,
+            "theme": reference.current,
+            "set_img_url":props.setImgUrl,
+        }
+        console.log(setInfo)
         try {
                 await axios.post(`http://127.0.0.1:8000/${user.username}/wishlist/`, setInfo, {
                     headers: {
@@ -59,8 +47,7 @@ const AddToWishList = (props) => {
     }
     const handleAddToWishLishClick = (e) => {
         e.preventDefault();
-        fetchThemeName(props.themeId).then(r =>{addSetToWishList()})
-
+        addSetToWishList(props.themeId);
     }
 
 
