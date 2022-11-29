@@ -5,7 +5,6 @@ import axios from 'axios';
 get the themeId by clicking the AddToWishListButton 
 send the themeId to Rebriable API to get the name of the theme
 store the name of the theme in themeName state variable
-
  */
 const AddToWishList = (props) => {
     const [user, token] = useAuth();
@@ -19,6 +18,15 @@ const AddToWishList = (props) => {
     // const themeNameSetter = (themeName) => {
     //     setThemeName(themeName);
     // }
+    const setInfoSetter = (themeName) => {
+        setSetInfo({
+            "set_num": props.selectedSetNumber,
+            "set_name": props.selectedSetName,
+            "release_year": props.releaseYear,
+            "theme": themeName,
+            "set_img_url":props.setImgUrl,
+        })
+    }
 
     const fetchThemeName = async (themeId) => {
         try {
@@ -27,13 +35,7 @@ const AddToWishList = (props) => {
                     Authorization: `key ${APIKEY}`,
                 },
             });
-            setSetInfo({
-                "set_num": props.setNum,
-                "set_name": props.setName,
-                "release_year": props.releaseYear,
-                "theme": response.data.name,
-                "set_img_url":props.setImgUrl,
-            })
+            setInfoSetter(response.data.name)
             } catch (error) {
                 console.log(error.response.data);
             }
@@ -42,8 +44,8 @@ const AddToWishList = (props) => {
     
     
     const addSetToWishList = async () => {
-        fetchThemeName(props.themeId);
-        console.log(setInfo);
+        // fetchThemeName(props.themeId);
+        // console.log(setInfo);
         try {
                 await axios.post(`http://127.0.0.1:8000/${user.username}/wishlist/`, setInfo, {
                     headers: {
@@ -55,8 +57,10 @@ const AddToWishList = (props) => {
                 console.log(error.response.data);
             }
     }
-    const handleAddToWishLishClick = () => {
-        addSetToWishList();
+    const handleAddToWishLishClick = (e) => {
+        e.preventDefault();
+        fetchThemeName(props.themeId).then(r =>{addSetToWishList()})
+
     }
 
 

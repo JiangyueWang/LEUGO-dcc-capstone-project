@@ -10,8 +10,8 @@ const SearchResultsInfo = (props) => {
     return ( 
     <div>   
             <AddToWishList 
-                setNum={props.set.set_num} 
-                setName={props.set.name} 
+                selectedSetNumber={props.set.set_num} 
+                selectedSetName={props.set.name} 
                 releaseYear={props.set.year}
                 themeId={props.set.theme_id}
                 setImgUrl={props.set.set_img_url} />
