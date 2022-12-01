@@ -1,35 +1,40 @@
-ul {
-  display: flex;
+.navBar {
+  background: black;
+  padding: 1.5rem 2rem;
+  height: 80px;
   justify-content: space-between;
-  list-style-type: none;
+  align-items: center;
+}
+.logo img{
+  height: 3.5rem;
+}
+
+.navBar-menu {
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  transition: 850ms;
+  list-style: none;
+  background-color: rgba(255, 255, 255, 0.8);
+  
+}
+
+.navBar-menu.active {
+  right: 0;
+  transition: 350ms;
+
 }
 
 li {
   font-size: 1.25rem;
+  margin: 1rem 0;
 }
-
-.navBar {
-  background: steelblue;
-  box-shadow: 4px 2px 5px gray;
-  color: white;
-  margin-bottom: 2rem;
-  padding: 1.5rem 2rem;
-}
-
-.navBar button {
-  background: transparent;
-  border: 2px solid white;
-  color: white;
-  padding: 0.4rem 0.5rem;
-}
-
-.navBar button:hover {
-  background: white;
-  color: steelblue;
-  cursor: pointer;
-}
-
-.brand {
-  cursor: pointer;
-  font-size: 2rem;
+.menu-item.active {
+  left: 0;
+  transition: 1s;
 }

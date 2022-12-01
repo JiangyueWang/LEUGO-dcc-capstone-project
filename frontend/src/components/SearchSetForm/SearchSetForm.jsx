@@ -18,7 +18,7 @@ const SearchSetForm = (props) => {
                 search: `${searchType}=${searchValue}`,
             },);
             }
-
+            props.setSearchIsClicked(!props.isSearchClicked)
     }
     
     return ( 
