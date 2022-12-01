@@ -24,12 +24,11 @@ const DisplaySearchResults = (props) => {
             
             );
     } else if (props.searchType === 'num'){
+        const result = props.results;
         return (
             <div>
-                <img src={props.results.set_img_url} />
-                <div>{props.results.name}</div>
+            <SearchResultsInfo set={result} />
             </div>
-
         );
     } else if (props.searchType === 'theme') {
         return (

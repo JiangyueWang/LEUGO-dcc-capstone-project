@@ -30,7 +30,7 @@ const UpdateDatesForm = (props) => {
         </select>
         <form onSubmit={handleUpdateDateForm}>
             <input placeholder='enter new dates' type='date' onChange={(event) => setNewDateValue(event.target.value)}></input>
-            <button type='submit'>submit</button>
+            <button type='submit'>add</button>
         </form>
     </div>);
 }
