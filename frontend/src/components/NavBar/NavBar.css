@@ -1,14 +1,18 @@
 .navBar {
   background: black;
   padding: 1.5rem 2rem;
-  height: 80px;
+  height: 77px;
   justify-content: space-between;
   align-items: center;
+  /* background-image: url("../../assests/whiteBrick.svg"); */
 }
 .logo img{
   height: 3.5rem;
+  cursor: pointer;
 }
-
+.navBar-menu-icon:hover {
+  cursor: pointer;
+}
 .navBar-menu {
   width: 250px;
   height: 100vh;
@@ -28,11 +32,15 @@
   right: 0;
   transition: 350ms;
 
+
 }
 
 li {
   font-size: 1.25rem;
   margin: 1rem 0;
+}
+a {
+  text-decoration: none;
 }
 .menu-item.active {
   left: 0;

@@ -6,6 +6,8 @@ import SearchSetForm from "../SearchSetForm/SearchSetForm";
 import Logo from "../../assests/logo.svg";
 import NavBarMenu from "../../assests/navBarMenu.svg";
 import NavBarMenuHovered from "../../assests/navBarMenuHover.svg";
+import SearchSetIcon from "../../assests/searchSetInactive.svg";
+import SearchSetIconHovered from "../../assests/searchSetActive.svg";
 import "./NavBar.css";
 
 const Navbar = () => {
@@ -13,15 +15,18 @@ const Navbar = () => {
   
   const navigate = useNavigate();
   const [isSearchClicked, setIsSearchClicked] = useState(false);
+
   const [navBarMenuIsClicked, setNavBarMenuIsClicked] = useState(false);
  
   const [hovered, setHovered] = useState(false)
+  const [SearchSetHovered, setSearchSetHovered] = useState(false)
   const handleLogoClick = (e) => {
     navigate({
       pathname:"",
     })
     setNavBarMenuIsClicked(false);
-    setIsSearchClicked(false)
+    setIsSearchClicked(false);
+    setSearchSetHovered(false)
   }
   const handleNavBarMenuClick = (e) => {
     e.preventDefault();
@@ -31,6 +36,7 @@ const Navbar = () => {
       }) 
     } else {
       setNavBarMenuIsClicked(!navBarMenuIsClicked)
+      
     }
   }
   return (
@@ -39,13 +45,19 @@ const Navbar = () => {
       <div className="logo" onClick={(e) => handleLogoClick(e)}>
         <img src={Logo}></img>
       </div>
-      
-      <div className="">
-          {!isSearchClicked ? <button onClick={() => {setIsSearchClicked(!isSearchClicked)} } className="primaryButton">search</button> : null}
-          {isSearchClicked ? <SearchSetForm setSearchIsClicked={setIsSearchClicked} isSearchClicked={isSearchClicked}/>  : null}
+     
+      <div>
+        {!isSearchClicked ? 
+          <img src={!SearchSetHovered ? SearchSetIcon : SearchSetIconHovered} 
+              onMouseOver={() => setSearchSetHovered(!SearchSetHovered)} 
+              onMouseOut={() => setSearchSetHovered(!SearchSetHovered)}
+            onClick={() => {setIsSearchClicked(!isSearchClicked)} } alt="search set icon"></img> 
+          : null }
       </div>
-
-      <div onClick={(e) => handleNavBarMenuClick(e)} >
+      
+       {isSearchClicked ? <SearchSetForm setSearchIsClicked={setIsSearchClicked} isSearchClicked={isSearchClicked}/>  : null}
+      
+      <div  onClick={(e) => handleNavBarMenuClick(e)} >
         <img src={hovered ? NavBarMenuHovered : NavBarMenu} 
             onMouseOver={() => setHovered(!hovered)} 
             onMouseOut={() => setHovered(!hovered)}
@@ -69,7 +81,7 @@ const Navbar = () => {
                 </li>
                 
                 <li>
-                  {user ? (<button onClick={logoutUser} className="navBarBtn" >Logout</button>) : null}
+                  {user ? (<button onClick={logoutUser} className="primaryButton" >Logout</button>) : null}
                 </li>
         </ul>
     </nav>
