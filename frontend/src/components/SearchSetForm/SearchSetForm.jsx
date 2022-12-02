@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { createSearchParams, useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
+import "./SearchSetForm.css";
 const SearchSetForm = (props) => {
     const navigate = useNavigate();
     
@@ -22,17 +22,27 @@ const SearchSetForm = (props) => {
     }
     
     return ( 
-    <div>
-        <select value={searchType} onChange={(event) => setSearchType(event.target.value)}>
-            <option>search a set by --</option>
-            <option value={`name`}>search a set by name</option>
-            <option value={`num`}>search a set by item number</option>
-            <option value={`theme`}>search a set by theme</option>
-        </select>
-        <form onSubmit={(e)=>{handleSearchFormSubmission(e)}}>
-            <button type='submit'>search</button>
-            <input type="text" placeholder='search for sets to add collection or wishlist' onChange={(event) => setSearchValue(event.target.value)}/>
-        </form>
+    <div className='search-set-form-flex flex'>
+        <div className='search-set-by-selector'>
+            <select  value={searchType} onChange={(event) => setSearchType(event.target.value)}>
+                <option>search set by</option>
+                <option value={`name`}>name</option>
+                <option value={`num`}>number</option>
+                <option value={`theme`}>theme</option>
+            </select>
+        </div>
+        <div className="search-form-wrapper" >
+            <form className="search-form-flex flex"onSubmit={(e)=>{handleSearchFormSubmission(e)}}>
+                
+
+                    <input type="text" placeholder='search...' onChange={(event) => setSearchValue(event.target.value)}/>
+     
+                <div>
+                    <button type='submit' className='primaryButton'>search</button>
+                </div>
+            </form>
+        </div>
+
     </div>);
 }
  

@@ -1,0 +1,22 @@
+.search-set-form-flex {
+    justify-content: flex-end;
+    align-items: center;
+    background-color: black;
+}
+select {
+    background-color:#F4BF1C;
+    /* background-image: url("../../assests/Dropdown.svg"); */
+    background-repeat: no-repeat;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: black;
+}
+
+.search-form-flex {
+    flex-direction: row;
+
+}
+.search-form-input input{
+    font-size: 0.5rem;
+}
