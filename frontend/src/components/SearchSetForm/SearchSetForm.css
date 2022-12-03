@@ -1,22 +1,58 @@
-.search-set-form-flex {
+.search-set-selector-form-wrapper {
+    flex-direction: row;
     justify-content: flex-end;
-    align-items: center;
     background-color: black;
 }
-select {
+select{
     background-color:#F4BF1C;
-    /* background-image: url("../../assests/Dropdown.svg"); */
-    background-repeat: no-repeat;
-    padding: 0.4rem 1rem;
-    border-radius: 6px;
-    font-size: 1rem;
+    padding: 0.55rem 1rem;
+    border-radius: 3px;
+    font-size: 1.5rem;
     color: black;
+    margin-right: 5px;
+}
+.search-set-button {
+    background-color: transparent;
+    border: none;
+    padding: 0rem 0.3rem;
+    border-radius: 10px;
+}
+.search-set-button img {
+    display: block;
+    padding-top: 3px;
+}
+.search-form input {
+    display: block;
+    background-color: transparent;
+    border: 0px solid white;
+}
+input:focus {
+    outline: none;
 }
 
-.search-form-flex {
-    flex-direction: row;
+.search-btn-input-wrapper {
+    background-color: white;
+    border-radius: 3px;
+    border: solid white 1px;
+    margin-right: 2px;
+    align-items: stretch;
+}
 
-}
-.search-form-input input{
-    font-size: 0.5rem;
-}
+@media screen and (max-width: 800px)  {
+    .search-set-selector-form-wrapper {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    select {
+        padding-right: 73px;
+        margin-right: 3px;
+        margin-bottom: 2px;
+    }
+    .search-btn-input-wrapper {
+        background-color: white;
+        border-radius: 3px;
+        border: solid white 1px;
+        margin-right: 2px;
+        align-items: stretch;
+    }
+} 

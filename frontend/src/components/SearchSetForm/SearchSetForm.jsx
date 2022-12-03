@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import SearchIcon from "../../assests/searchSetInactive.svg";
 import "./SearchSetForm.css";
 const SearchSetForm = (props) => {
     const navigate = useNavigate();
@@ -22,9 +23,9 @@ const SearchSetForm = (props) => {
     }
     
     return ( 
-    <div className='search-set-form-flex flex'>
-        <div className='search-set-by-selector'>
-            <select  value={searchType} onChange={(event) => setSearchType(event.target.value)}>
+    <div className='search-set-selector-form-wrapper flex'>
+        <div>
+            <select className='select' value={searchType} onChange={(event) => setSearchType(event.target.value)}>
                 <option>search set by</option>
                 <option value={`name`}>name</option>
                 <option value={`num`}>number</option>
@@ -32,18 +33,19 @@ const SearchSetForm = (props) => {
             </select>
         </div>
         <div className="search-form-wrapper" >
-            <form className="search-form-flex flex"onSubmit={(e)=>{handleSearchFormSubmission(e)}}>
-                
-
+            <form className="search-form"onSubmit={(e)=>{handleSearchFormSubmission(e)}}>
+                    <div className='search-btn-input-wrapper flex'>
+                    <button type='submit' className='search-set-button'>
+                        <img src={SearchIcon}></img>
+                    </button>
                     <input type="text" placeholder='search...' onChange={(event) => setSearchValue(event.target.value)}/>
-     
-                <div>
-                    <button type='submit' className='primaryButton'>search</button>
-                </div>
+                    </div>
+
+
             </form>
         </div>
-
-    </div>);
+    </div>
+    );
 }
  
 export default SearchSetForm;

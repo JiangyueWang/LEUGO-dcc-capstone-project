@@ -12,7 +12,7 @@ html {
   font-size: 62.5%;
   background-color: black;
   color: white;
-   background-image: url("./assests/whiteBrick.svg");
+  background-image: url("./assests/whiteBrick.svg");
 }
 
 .grid {
@@ -26,27 +26,27 @@ button {
   font-size: 1.25rem;
 }
 
-.primaryButton {
+.primary-button {
   background-color: #F4BF1C;
   color: black;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.2rem;
   border-radius: 6px;
   font-size: 1rem;
   border-color: black;
   cursor: pointer;
 }
-.primaryButton:hover {
+.primary-button:hover {
   background-color: #F4BF1C;
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.2rem;
   border-radius: 6px;
   border-color: white;
   transition: 0.1s;
 }
-.primaryButton:focus {
+.primary-button:focus {
   background-color: #F4BF1C;
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.2rem;
   border-radius: 6px;
   border-color: white;
   transition: 0.1s;
