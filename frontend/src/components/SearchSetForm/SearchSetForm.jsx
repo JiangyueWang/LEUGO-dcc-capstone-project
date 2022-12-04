@@ -24,8 +24,8 @@ const SearchSetForm = (props) => {
     
     return ( 
     <div className='search-set-selector-form-wrapper flex'>
-        <div>
-            <select className='select' value={searchType} onChange={(event) => setSearchType(event.target.value)}>
+        <div  className='selector-wrapper'>
+            <select value={searchType} onChange={(event) => setSearchType(event.target.value)}>
                 <option>search set by</option>
                 <option value={`name`}>name</option>
                 <option value={`num`}>number</option>

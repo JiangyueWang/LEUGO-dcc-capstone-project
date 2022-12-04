@@ -1,0 +1,22 @@
+.set-general-info-inner-wrapper {
+    padding: 0 1.5rem;
+}
+.set-in-collection-img {
+    width: 300px;
+    height: 200px;
+    margin-bottom: 20px;
+    transition: all 0.5s ease-in-out;
+    object-fit: contain;
+
+}
+.set-in-collection-img:hover{
+    transform: scale(1.2);
+}
+.set-name-num-text-wrapper {
+    margin-bottom: 1rem;
+}
+.set-name-text {
+    height: 40px;
+    margin-bottom: 5px;
+}
+

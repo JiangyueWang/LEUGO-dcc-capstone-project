@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import DisplaySetsInCollection from '../../components/DisplaySetsInCollection/DisplaySetsInCollection';
 
+import "./MyCollectionPage.css";
 const MyCollection = () => {
     const [user, token] = useAuth();
  
@@ -30,8 +31,11 @@ const MyCollection = () => {
       }, []);
 
     return (
-    <div>
-        {setsInCollection && <DisplaySetsInCollection  setSetsinCollection={setsInCollection} username={user.username} usertoken={token} fetchSetsInCollection={fetchSetsInCollection}/>}
+    <div >
+        {setsInCollection ? 
+            (<div className='collection-page-content-wrapper'>
+            <DisplaySetsInCollection  setSetsinCollection={setsInCollection} username={user.username} usertoken={token} fetchSetsInCollection={fetchSetsInCollection}/>
+            </div>) : null}
     </div>
     );
 }

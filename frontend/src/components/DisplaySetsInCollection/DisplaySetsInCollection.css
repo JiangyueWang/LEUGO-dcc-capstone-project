@@ -1,0 +1,19 @@
+.sets-in-collection-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    column-gap: 1rem;
+    row-gap: 1rem;
+    padding-top: 10px;
+}
+.set-info-outer-wrapper{
+    width: 400px;
+    height: 350px;
+    border: #e2e2e2 solid 1px;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 900px) {
+    .sets-in-collection-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

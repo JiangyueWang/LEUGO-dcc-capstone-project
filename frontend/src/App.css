@@ -13,6 +13,7 @@ html {
   background-color: black;
   color: white;
   background-image: url("./assests/whiteBrick.svg");
+  line-height: 2rem;
 }
 
 .grid {
@@ -21,36 +22,45 @@ html {
 .flex {
   display: flex;
 }
-
-button {
-  font-size: 1.25rem;
+/* typography */
+h2 {
+  font-size:1.5rem;
+  font-weight: 700;
+}
+p {
+  font-size:1.5rem;
+  font-weight: 400;
 }
 
-.primary-button {
-  background-color: #F4BF1C;
-  color: black;
-  padding: 0.5rem 1.2rem;
+.primary-button{
+  background-color: #fd8024;
+  padding: 1rem 0rem;
   border-radius: 6px;
-  font-size: 1rem;
-  border-color: black;
+  border: solid #fff 2px;
+  font-size: 1.5rem;
+  font-weight: 700;
   cursor: pointer;
+  transition: 0.5s;
 }
 .primary-button:hover {
-  background-color: #F4BF1C;
-  color: white;
-  padding: 0.5rem 1.2rem;
+  background-color: #fff;
+  padding: 1rem 0rem;
   border-radius: 6px;
-  border-color: white;
-  transition: 0.1s;
+  border: solid #fd8024 2px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+
 }
 .primary-button:focus {
-  background-color: #F4BF1C;
-  color: white;
-  padding: 0.5rem 1.2rem;
+  padding: 1rem 0rem;
   border-radius: 6px;
-  border-color: white;
-  transition: 0.1s;
+  border: solid #fd8024 2px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
 }
+
 /* p {
   font-size: 20px;
 }
