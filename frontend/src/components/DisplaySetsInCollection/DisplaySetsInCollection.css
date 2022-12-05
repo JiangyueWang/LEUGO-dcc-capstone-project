@@ -1,3 +1,11 @@
+.page-icon-and-name {
+    padding: 1rem 1.5rem;
+    align-items: center;   
+
+}
+.page-icon-and-name img {
+    margin-right: 1.5rem;
+}
 .sets-in-collection-wrapper {
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
@@ -8,9 +16,15 @@
 }
 .set-info-outer-wrapper{
     width: 380px;
-    height: 350px;
+    height: 360px;
     border: #e2e2e2 solid 1px;
     overflow: hidden;
+}
+.set-info-outer-wrapper-wishlist {
+    width: 380px;
+    height: 420px;
+    border: #e2e2e2 solid 1px;
+    overflow: hidden; 
 }
 
 @media screen and (max-width: 900px) {

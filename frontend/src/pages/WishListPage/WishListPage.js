@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import axios from 'axios';
+import "../MyCollectionPage/MyCollectionPage.css"
 
 import DisplaySetsInWishList from '../../components/DisplaySetsInWishList/DisplaySetsInWishList';
 
@@ -31,15 +32,14 @@ const WishList = () => {
 
     return ( 
     <div>
-        {
-            setsInWishlist &&
-            <DisplaySetsInWishList 
-                setsInWishlist={setsInWishlist} 
-                username={user.username} 
-                usertoken={token}
-                fetchSetsInWishlist={fetchSetsInWishlist}
-            />
-        }
+        {setsInWishlist ? 
+            (<div className='collection-page-content-wrapper'>
+                    <DisplaySetsInWishList 
+                    setsInWishlist={setsInWishlist} 
+                    username={user.username} 
+                    usertoken={token}
+                    fetchSetsInWishlist={fetchSetsInWishlist}/>
+            </div>) : null}
     </div> );
 }
  

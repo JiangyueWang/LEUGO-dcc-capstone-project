@@ -19,4 +19,35 @@
     height: 40px;
     margin-bottom: 5px;
 }
-
+/* wishlist page styling */
+table {
+    margin: 0.5rem 0;
+}
+td {
+    padding-right: 30px;
+}
+.check-price-buttons {
+    justify-content: space-between;
+}
+.check-price-buttons button{
+    padding: 0.2rem 1rem;
+    margin-bottom: 1rem;
+    background-color: white;
+    border: solid #fd8024 2px;
+    color: #000;
+    border-radius: 6px;
+}
+.check-price-buttons button:hover{
+    padding: 0.2rem 1rem;
+    margin-bottom: 1rem;
+    background-color: #fd8024;
+    border: solid #fff 2px;
+    color: #fff;
+    border-radius: 6px;
+}
+.check-price-on-lego-site-button {
+    margin-left: 2px;
+}
+.check-price-on-amazon-site-button {
+    margin-right: 3px;
+}

@@ -100,7 +100,7 @@ const SetInfoDetails = (props) => {
                             <h3>Build Completion Date</h3>
                             <p>{props.setBuildCompletionDate}</p>  */}
                         </div>
-                    </div>
+                    </div>          
                     {!showUpdateDatesForm ? (
                             <div className='set-info-details-buttons flex'>
                             <button type='button' class="secondary-button wider-buttons" onClick={() => {setShowUpdateDatesForm((showUpdateDatesForm) => !showUpdateDatesForm)}}>Update</button>
