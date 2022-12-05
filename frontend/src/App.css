@@ -24,7 +24,11 @@ html {
 }
 /* typography */
 h2 {
-  font-size:1.5rem;
+  font-size:2rem;
+  font-weight: 700;
+}
+h3 {
+  font-size: 1.5rem;
   font-weight: 700;
 }
 p {
@@ -59,6 +63,40 @@ p {
   font-size: 1.5rem;
   font-weight: 700;
   cursor: pointer;
+}
+
+.secondary-button{
+  background-color: #fff;
+  color: #fd8024;
+  padding: 0.5rem 2rem;
+  border-radius: 6px;
+  border: solid #fd8024 2px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.secondary-button:hover{
+  background-color: #fd8024;
+  color: #fff;
+  padding: 0.5rem 2rem;
+  border-radius: 6px;
+  border: solid #fd8024 2px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.secondary-button:focus{
+  background-color: #fd8024;
+  color: #fff;
+  padding: 0.5rem 2rem;
+  border-radius: 6px;
+  border: solid #fd8024 2px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.5s;
 }
 
 /* p {

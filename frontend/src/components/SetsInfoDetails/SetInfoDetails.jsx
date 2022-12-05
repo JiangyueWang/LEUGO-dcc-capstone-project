@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState} from 'react';
 import axios from 'axios';
 import UpdateDatesForm from '../UpdateDatesForm/UpdateDatesForm';
+import CloseNavMenuIcon from "../../assests/CloseMenu.svg";
 import "./SetInfoDetails.css"
 
 /*
@@ -46,20 +47,65 @@ const SetInfoDetails = (props) => {
     
     return (
     <div>
-        <div className="modal-active">
-            <div className='modal-content-wrapper' ref={ref}>
-                    <button type='button' onClick={() => {props.showModal(false)}}>close</button>
-                    <div>
-                       <img className='modal-img' src={props.setimgsrc}></img>
-                        <p>{props.setName}</p>
-                        <p>{props.setNum}</p>
-                        <p>ReleaseYear{props.setReleaseYear}</p>
-                        <p>Theme{props.setTheme}</p>
-                        <p>PurchaseDate{props.setPurchaseDate}</p>
-                        <p>BuildCompletionDate{props.setBuildCompletionDate}</p> 
+        <div className="modal-active grid">
+            <div className='modal-content-wrapper-outer grid' ref={ref}>
+                
+                <div className='modal-content-wrapper-innter'>
+
+                    <div className="close-modal-btn flex">                    
+                        <button  type='button' onClick={() => {props.showModal(false)}}>
+                            <img src={CloseNavMenuIcon}></img>
+                        </button>
                     </div>
-                    <button type='button' onClick={() => {setShowUpdateDatesForm((showUpdateDatesForm) => !showUpdateDatesForm)}}>update</button>
-                    <button type='button' onClick={handleDeleteSetClick}>Delete</button>
+                    <div className='set-info-details-content grid'>
+
+                        <img className='modal-img' src={props.setimgsrc}></img>
+                        <div className='set-info-details-content-text'>
+                        <h2>{props.setName}</h2>
+                            <table className='set-info-table'>
+                            <tbody>
+                                <tr>
+                                    <td><h3>Item Number</h3></td>
+                                    <td><p>{props.setNum}</p></td>
+                                </tr>
+                                <tr>
+                                    <td><h3>Release Year</h3></td>
+                                    <td><p>{props.setReleaseYear}</p></td>
+                                </tr>
+                                <tr>
+                                    <td><h3>Theme</h3></td>
+                                    <td><p>{props.setTheme}</p></td>
+                                </tr>
+                                <tr>
+                                    <td><h3>Purchase Date</h3></td>
+                                    <td><p>{props.setPurchaseDate}</p></td>
+                                </tr>
+                                <tr>
+                                    <td><h3>Build Completion Date</h3></td>
+                                    <td><p>{props.setBuildCompletionDate}</p></td>
+                                </tr>
+                            </tbody>
+                                
+                            </table>
+                            
+                            {/* <h3>Item Number</h3>
+                            <p>{props.setNum}</p>
+                            <h3>Release Year</h3>
+                            
+                            <p>{props.setReleaseYear}</p>
+                            <h3>Theme</h3>
+                            <p>{props.setTheme}</p>
+                            <h3>Purchase Date</h3>
+                            <p>{props.setPurchaseDate}</p>
+                            <h3>Build Completion Date</h3>
+                            <p>{props.setBuildCompletionDate}</p>  */}
+                        </div>
+                    </div>
+                    {!showUpdateDatesForm ? (
+                            <div className='set-info-details-buttons flex'>
+                            <button type='button' class="secondary-button wider-buttons" onClick={() => {setShowUpdateDatesForm((showUpdateDatesForm) => !showUpdateDatesForm)}}>Update</button>
+                                <button type='button' class="secondary-button wider-buttons delete-buttons"  onClick={handleDeleteSetClick}>Delete</button>
+                            </div>): null}
                     {
                         showUpdateDatesForm && 
                         <UpdateDatesForm 
@@ -70,7 +116,8 @@ const SetInfoDetails = (props) => {
                             />
                     }
 
-            </div>  
+                </div>  
+            </div>
         </div>
 
 
