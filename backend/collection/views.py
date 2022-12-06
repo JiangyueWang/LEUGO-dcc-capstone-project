@@ -31,19 +31,21 @@ def get_sets_in_collection(request, username):
             return Response(sum_minifigs_obj)
         elif sum_type_param == 'theme':
             # getting number of sets logged in user owned
-            sum_sets_by_theme = sets.values(
+            sum_sets_by_theme = Collection.objects.filter(user_id=request.user.id).values(
                 'theme').annotate(count=Count('theme'))
 
             return Response(sum_sets_by_theme)
         else:
             sum_all = {}
+            sum_num_sets = sets.count()
             sum_num_parts = sets.aggregate(Sum('num_parts'))
             sum_minifigs = sets.aggregate(Sum('minifigs_num'))
-            sum_sets_by_theme = sets.values(
+            sum_sets_by_theme = Collection.objects.filter(user_id=request.user.id).values(
                 'theme').annotate(count=Count('theme'))
             sum_all['total_num_parts'] = sum_num_parts
             sum_all['total_num_minifigs'] = sum_minifigs
             sum_all['theme'] = sum_sets_by_theme
+            sum_all['total_num_set'] = sum_num_sets
             return Response(sum_all)
 
     else:
