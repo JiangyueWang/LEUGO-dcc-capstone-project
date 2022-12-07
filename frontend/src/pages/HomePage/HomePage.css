@@ -1,0 +1,28 @@
+.container {
+    background-color: rgba(255, 255, 255, 1);
+    color: black;
+    height: 100%;
+}
+.homepage-background-login-user {
+    padding: 3rem 5rem;
+}
+
+.user-sets-info {
+    flex-direction: column;
+    margin-bottom: 3rem;
+}
+.li-item-flex {
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.li-item-flex img {
+    margin-right: 2rem;
+}
+.select-chart-type-wrapper {
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+.chart-wrapper-flex {
+    justify-content: center;
+}

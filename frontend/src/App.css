@@ -40,6 +40,9 @@ p {
   font-weight: 400;
 }
 
+ul {
+  list-style-type: none;
+}
 .primary-button{
   background-color: #fd8024;
   padding: 1rem 0rem;
