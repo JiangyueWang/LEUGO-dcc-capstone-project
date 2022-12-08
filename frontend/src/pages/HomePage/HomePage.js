@@ -78,8 +78,6 @@ const HomePage = () => {
                 <option value={"PieChart"}>Pie Chart</option>
               </select>
             </div>
-
-      
             {sameThemeCount ? (
               <div className="flex chart-wrapper-flex"><EntriesChartTracker entries={sameThemeCount} chartType={chartType}/></div>
               ) : null} 

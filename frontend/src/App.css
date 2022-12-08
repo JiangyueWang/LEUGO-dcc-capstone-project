@@ -43,6 +43,16 @@ p {
 ul {
   list-style-type: none;
 }
+
+li {
+  font-size: 1.25rem;
+  margin: 1rem 0;
+}
+
+a {
+  text-decoration: none;
+}
+
 .primary-button{
   background-color: #fd8024;
   padding: 1rem 0rem;

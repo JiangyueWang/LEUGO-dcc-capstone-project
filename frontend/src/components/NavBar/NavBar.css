@@ -18,7 +18,7 @@
 
 
 .navBar-menu {
-  width: 130px;
+  width: 30%;
   height: 100vh;
 
 
@@ -31,7 +31,7 @@
   flex-direction: column;
   justify-content: center;
 
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.85);
   
   padding-bottom: 150px;
   align-items: center;
@@ -48,7 +48,7 @@
   flex-direction: column;
   justify-content: center;
 
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.95);
   
   padding-bottom: 370px;
   align-items: center;
@@ -56,26 +56,23 @@
 
 }
 
-li {
-  font-size: 1.25rem;
-  margin: 1rem 0;
-
-}
-a {
-  text-decoration: none;
-}
-
 
 .navBar-close-icon-wrapper  {
-  margin-left: 58px;
-  margin-bottom: 50px;
+  margin-top: 50px;
 }
-.navBar-close-menu-text {
-  display: none;
+.navBar-close-icon-wrapper:hover{
+  margin-top: 50px;
+  cursor: pointer;
+}
+.close-menu-text-active {
+  display: inline-block;
   color: black;
+  padding-left: 1rem;
 }
-
-
+.close-menu-text-inactive {
+  display: none;
+  color: transparent;
+}
 
 .fa{
   color:#0363BF;

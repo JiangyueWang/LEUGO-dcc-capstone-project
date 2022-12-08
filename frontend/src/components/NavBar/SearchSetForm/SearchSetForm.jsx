@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import SearchIcon from "../../assests/searchSetInactive.svg";
+import SearchIcon from "../../../assests/searchSetInactive.svg";
 import "./SearchSetForm.css";
 const SearchSetForm = (props) => {
     const navigate = useNavigate();
