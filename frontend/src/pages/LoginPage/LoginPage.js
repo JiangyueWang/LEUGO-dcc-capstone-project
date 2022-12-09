@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import AuthContext from "../../context/AuthContext";
 import useCustomForm from "../../hooks/useCustomForm";
 import { Link } from "react-router-dom";
+import Minifighead from "../../assests/LoginMinifig.svg"
 import "./LoginPage.css";
 
 const LoginPage = () => {
@@ -19,32 +20,55 @@ const LoginPage = () => {
   }, [isServerError]);
 
   return (
-    <div className="container">
-      <form className="form" onSubmit={handleSubmit}>
-        <label>
-          Username:{" "}
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleInputChange}
-          />
-        </label>
-        <label>
-          Password:{" "}
-          <input
+    <div className="login-page-container">
+
+
+      <div className="login-minifighead flex">
+          <img src={Minifighead} ></img>
+      </div>
+      
+      <div className="form-container-outer flex">
+        <form className="form-wrapper-inner flex" onSubmit={handleSubmit}>
+          <div className="username-input-wrapper">
+              <labe><h2>Username:{" "}</h2></labe>
+              <input
+                type="text"
+                name="username"
+                value={formData.username}
+                onChange={handleInputChange}
+              />
+          </div>
+
+          <div className="passwrod-input-wrapper">
+
+            <labe><h2>Password:{" "}</h2></labe>
+            <input
             type="text"
             name="password"
             value={formData.password}
             onChange={handleInputChange}
-          />
-        </label>
-        {isServerError ? (
-          <p className="error">Login failed, incorrect credentials!</p>
-        ) : null}
-        <Link to="/register">Click to register!</Link>
-        <button>Login!</button>
-      </form>
+            />
+
+          </div>
+
+          {isServerError ? (
+            <p className="error">Login failed, incorrect credentials!</p>
+          ) : null}
+          
+          <button className="primary-button">Login!</button>
+
+          <div className="register-wrapper">
+            <p>Don’t have a LEUGO Account?</p>
+            <Link to="/register"><p className="create-account-p">Create an account!</p></Link>
+          </div>
+          
+        </form>
+
+
+      </div>
+
+
+
     </div>
   );
 };

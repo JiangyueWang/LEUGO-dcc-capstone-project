@@ -44,7 +44,7 @@ const HomePage = () => {
   }, [])
 
   return (
-    <div className="container">
+    <div className="homepage-container">
       {
         user ? 
         (<div className="homepage-background-login-user">
