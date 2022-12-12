@@ -10,16 +10,34 @@ const SearchSetForm = (props) => {
     
     const handleSearchFormSubmission = (event) => {
         event.preventDefault();
-        if(searchValue !== undefined) {
 
-            // solution found on https://stackoverflow.com/questions/73753678/how-to-use-both-state-and-query-params-with-usenavigate-in-react-router
-            // solution reference https://stackoverflow.com/questions/65800658/react-router-v6-navigate-to-a-url-with-searchparams
-            navigate( {
-                pathname:"/search",
-                search: `${searchType}=${searchValue}`,
-            },);
+        if (searchType !== undefined) {
+            
+            if(searchValue === undefined) {
+                // if the user didnt eneter any value to search
+                // an alert to warn user to enter the value to search
+                // SearchSet form stays open
+                alert("please enter a value to search");
+                props.setSearchIsClicked(props.isSearchClicked);
             }
-            props.setSearchIsClicked(!props.isSearchClicked)
+            else {
+                // solution found on https://stackoverflow.com/questions/73753678/how-to-use-both-state-and-query-params-with-usenavigate-in-react-router
+                // solution reference https://stackoverflow.com/questions/65800658/react-router-v6-navigate-to-a-url-with-searchparams
+                navigate( {
+                    pathname:"/search",
+                    search: `${searchType}=${searchValue}`,
+                },);
+                props.setSearchIsClicked(!props.isSearchClicked)
+            }
+        } else {
+            // if the user didnt select which type of search i.e. name, number or theme
+            // an alert to warn user to select the type of search
+            // SearchSet form stays open
+            alert("please select type to search the set");
+            props.setSearchIsClicked(props.isSearchClicked);
+        }
+        
+            
     }
     
     return ( 
