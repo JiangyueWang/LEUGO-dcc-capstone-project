@@ -20,7 +20,7 @@ const LoginPage = () => {
   }, [isServerError]);
 
   return (
-    <div className="login-page-container">
+    <div className="login-regitser-page-container">
 
 
       <div className="login-minifighead flex">
@@ -29,7 +29,7 @@ const LoginPage = () => {
       
       <div className="form-container-outer flex">
         <form className="form-wrapper-inner flex" onSubmit={handleSubmit}>
-          <div className="username-input-wrapper">
+          <div className="form-input-wrapper">
               <labe><h2>Username:{" "}</h2></labe>
               <input
                 type="text"
@@ -39,7 +39,7 @@ const LoginPage = () => {
               />
           </div>
 
-          <div className="passwrod-input-wrapper">
+          <div className="form-input-wrapper">
 
             <labe><h2>Password:{" "}</h2></labe>
             <input

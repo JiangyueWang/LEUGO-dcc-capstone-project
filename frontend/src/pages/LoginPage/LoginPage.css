@@ -1,7 +1,4 @@
-.login-page-container {
-  background-color: rgba(0, 0, 0, 0.5);
-  height: 100vh;
-}
+
 .login-minifighead {
   justify-content: space-around;
 }
@@ -13,27 +10,10 @@
   
 }
 
-.form-container-outer {
-  justify-content: center;
-}
-
-.form-wrapper-inner {
-
-  flex-direction: column;
-  align-items: center;
-}
-
-.form-wrapper-inner input {
-  font-size: 1.rem;
-  font-weight: 500;
-  display: block;
-  margin: 10px 0px;
-  display: block;
-}
-.form-wrapper-inner button {
+/* .form-wrapper-inner button {
   width: 60%;
   margin-top: 20px;
-}
+} */
 .register-wrapper {
   margin-top: 50px;
 }

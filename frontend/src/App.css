@@ -118,6 +118,38 @@ a {
   cursor: pointer;
   transition: 0.5s;
 }
+.login-regitser-page-container {
+  background-color: rgba(0, 0, 0, 0.55);
+  height: 100vh;
+}
+.form-container-outer {
+  justify-content: center;
+}
+
+.form-wrapper-inner {
+  flex-direction: column;
+  align-items: center;
+}
+.form-wrapper-inner input {
+  font-size: 1.5rem;
+  font-weight: 500;
+  display: block;
+  margin: 10px 0px;
+  display: block;
+}
+.form-wrapper-inner button {
+  width: 100px;
+  margin-top: 30px;
+}
+.register-page-top-img {
+  justify-content: space-around;
+}
+.register-page-top-img img{
+  width: 200px;
+  margin: 20px 0px;
+  border: 0px solid rgba(255, 255, 255, 0.9);
+  border-radius: 5rem;
+}
 
 /* p {
   font-size: 20px;
