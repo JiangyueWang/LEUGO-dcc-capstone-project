@@ -8,9 +8,9 @@
     margin-bottom: 0.5rem;
 }
 
-.single-search-result-img {
+.single-search-result-img img{
     width: 300px;
     height: 200px;
-    border: "#e2e2e2 solid 1px";
+    border: #e2e2e2 solid 2px;
 }
 

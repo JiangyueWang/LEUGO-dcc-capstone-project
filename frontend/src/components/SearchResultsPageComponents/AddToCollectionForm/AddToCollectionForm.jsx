@@ -61,12 +61,11 @@ const AddToCollectionForm = (props) => {
                     Authorization: "Bearer " + token,
                 },
             });
-            setIsAddedToCollection(true)
+            setIsAddedToCollection(true);
 
         } catch (error) {
-            console.log(error.response.data);
-            if (error.response.status) {
-                alert("duplicated")
+            if (error.response.status === 409) {
+                alert ("set already exist in your collection")
             }
             console.error(error.response.status)
         } 
