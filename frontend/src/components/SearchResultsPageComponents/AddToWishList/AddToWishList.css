@@ -1,0 +1,11 @@
+.add-to-wish-list-flex {
+    justify-content: flex-end;
+}
+.add-to-wish-list-flex :hover{
+    cursor: pointer;
+}
+.add-to-wish-list-flex button {
+    border: none;
+    background: none;
+    margin-left: 1rem;
+}

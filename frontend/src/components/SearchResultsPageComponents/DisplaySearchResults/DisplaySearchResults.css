@@ -1,0 +1,12 @@
+.search-results-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 1rem;
+    row-gap: 1rem;
+    padding-top: 10px;
+    background-color: #fff;
+}
+
+.single-search-result-outter-wrapper {
+    width: 300px;
+    height: 350px;
+}

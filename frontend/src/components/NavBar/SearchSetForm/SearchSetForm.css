@@ -38,7 +38,7 @@ input:focus {
     align-items: stretch;
 }
 
-@media screen and (max-width: 900px)  {
+@media screen and (max-width: 600px)  {
     .search-set-selector-form-wrapper {
         flex-direction: column;
         align-items: flex-end;

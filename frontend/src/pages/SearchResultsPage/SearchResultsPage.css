@@ -1,0 +1,12 @@
+.search-results-page-container{
+    background-color: #fff;
+    height: 100%;
+}
+.all-results-outter-wrapper {
+    padding: 3rem 5rem;
+
+}
+.all-results-outter-wrapper h1 {
+    color: #000;
+    margin-bottom: 3rem;
+}

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { React, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import DisplaySearchResults from '../../components/SearchResultsPageComponents/DisplaySearchResults/DisplaySearchResults';
-
+import "./SearchResultsPage.css"
 const SearchResultsPage = (props) => {
     // this is the API key to read data from Rebriable database
     const APIKEY = `25b99659e1195c90ddfc10b563ba266c`;
@@ -118,6 +118,7 @@ const SearchResultsPage = (props) => {
     }, [valueForSearch]);
 
     useEffect(() => {
+        // filter the data fetech from the Rebriable API
         if(searchResults) {
             if (typeForSearch === 'name') {
                 const filteredResults = searchResults.filter(result => result.num_parts !== 0 )
@@ -140,11 +141,15 @@ const SearchResultsPage = (props) => {
 
 
     return ( 
-    <div>
-        <h1>{`search results for "${valueForSearch}"`}</h1> 
-        {(searchResultFiltered && typeForSearch!=='theme') && <DisplaySearchResults results={searchResultFiltered} searchType={typeForSearch}/>}  
-        {(searchResultFiltered && typeForSearch==='theme' && themeSets) && <DisplaySearchResults results={themeSets} searchType={typeForSearch}/>}  
-
+    <div className='search-results-page-container'>
+        <div className='all-results-outter-wrapper'>
+            <h1 className='search-result-page-title'>{`search results for "${valueForSearch}"`}</h1> 
+            <div className='all-results-inner-wrapper'>
+                {(searchResultFiltered && typeForSearch!=='theme') && <DisplaySearchResults results={searchResultFiltered} searchType={typeForSearch}/>}  
+                {(searchResultFiltered && typeForSearch==='theme' && themeSets) && <DisplaySearchResults results={themeSets} searchType={typeForSearch}/>}  
+            </div>
+           
+        </div>
     </div>);
 }
  

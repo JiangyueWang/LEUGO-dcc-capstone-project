@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import SearchResultsInfo from '../SearchResultsInfo/SearchResultsInfo';
-import axios from 'axios';
+import "./DisplaySearchResults.css"
 const DisplaySearchResults = (props) => {
 
     if (props.searchType === 'name') {
         return (
-            <div>
+            <div className='search-results-wrapper grid'>
                 {
                     props.results.map ((result) => {
                     return (
-                        <div>
-
-                            <div>
-                                <SearchResultsInfo set={result} />
-                            </div>
-                            
+                        <div className='single-search-result-outter-wrapper'>
+                                <SearchResultsInfo set={result} key={result.set_num}/>
                         </div>
 
                         
@@ -26,17 +22,20 @@ const DisplaySearchResults = (props) => {
     } else if (props.searchType === 'num'){
         const result = props.results;
         return (
-            <div>
-            <SearchResultsInfo set={result} />
+            <div className='single-search-result-outter-wrapper'>
+            <SearchResultsInfo set={result} key={result.set_num}/>
             </div>
         );
     } else if (props.searchType === 'theme') {
         return (
-            <div>
+            <div className='search-results-wrapper grid'>
                 {
                     props.results.map ((result) => {
                     return (
-                        <SearchResultsInfo set={result} />
+                        <div className='single-search-result-outter-wrapper'>
+                            <SearchResultsInfo set={result} key={result.set_num}/>
+                        </div>
+                        
                     )
                 })}
             </div>
