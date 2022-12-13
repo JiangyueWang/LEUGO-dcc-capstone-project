@@ -22,6 +22,9 @@
 .close-modal-btn {
     justify-content: flex-end;
 }
+.close-modal-btn :hover {
+    cursor: pointer;
+}
 .close-modal-btn button {
     background-color: transparent;
     border: none;

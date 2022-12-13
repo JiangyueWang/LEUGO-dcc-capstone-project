@@ -64,7 +64,7 @@ const NavBarMenu = (props) => {
             {/* Go to my collection */}
             <li onMouseOver={() => setIsGoToMyCollectionHovered(!isGoToMyCollectionHovered)}
                 onMouseOut={() => setIsGoToMyCollectionHovered(!isGoToMyCollectionHovered)}>
-                <Link to={`${props.user.username}/collection`} className='flex'>
+                <Link to={`${props.user.username}/collection`}>
                     <img src={MyCollectionIcon}></img>
                     <div className={isGoToMyCollectionHovered ? "close-menu-text-active" : "close-menu-text-inactive"}>
                         <p>Go to my Collection</p>

@@ -4,7 +4,7 @@ import MyWishListIcon from "../../assests/WishListIcon.svg";
 import "../DisplaySetsInCollection/DisplaySetsInCollection.css";
 const DisplaySetsInWishList = (props) => {
     return (
-        <div>
+        <div  className='sets-in-collection-outter-container'>
             <div className='flex page-icon-and-name'>
                 <img src={MyWishListIcon}></img>
                 <h1>Sets In Wish List</h1>
