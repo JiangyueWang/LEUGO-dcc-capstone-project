@@ -7,7 +7,7 @@ DisplaySetsInCollection component passes data of sets from backend into map func
 */
 const DisplaySetsInCollection = (props) => {
     return ( 
-        <div>
+        <div className='sets-in-collection-outter-container'>
             <div className='flex page-icon-and-name'>
                 <img src={MyCollectionIcon}></img>
                 <h1>Sets In Collection</h1>

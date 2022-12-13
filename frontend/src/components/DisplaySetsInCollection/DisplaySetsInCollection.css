@@ -1,16 +1,18 @@
+.sets-in-collection-outter-container {
+    padding: 2rem 1rem
+}
 .page-icon-and-name {
-    padding: 1rem 1.5rem;
+    padding-left: 2rem;
+    margin-bottom: 2rem;
     align-items: center;   
-
 }
 .page-icon-and-name img {
     margin-right: 1.5rem;
 }
 .sets-in-collection-wrapper {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
     justify-items: center;
-    column-gap: 1rem;
-    row-gap: 1rem;
+    row-gap: 4rem;
     padding-top: 10px;
     background-color: #fff;
 }
@@ -27,8 +29,3 @@
     overflow: hidden; 
 }
 
-@media screen and (max-width: 900px) {
-    .sets-in-collection-wrapper {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
