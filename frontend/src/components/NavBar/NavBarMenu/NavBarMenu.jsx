@@ -56,7 +56,7 @@ const NavBarMenu = (props) => {
                 onMouseOut={() => setIsGoToMyHomeHovered(!isGoToMyHomeHovered)}>
                 <Link to={``}><FontAwesomeIcon className="fa" icon={faHouse} size="2x"/>
                     <div className={isGoToMyHomeHovered ? "close-menu-text-active" : "close-menu-text-inactive"}>
-                        <p>go to my homepage</p>
+                        <p>Go to my homepage</p>
                     </div>
                 </Link>
             </li>
@@ -64,10 +64,10 @@ const NavBarMenu = (props) => {
             {/* Go to my collection */}
             <li onMouseOver={() => setIsGoToMyCollectionHovered(!isGoToMyCollectionHovered)}
                 onMouseOut={() => setIsGoToMyCollectionHovered(!isGoToMyCollectionHovered)}>
-                <Link to={`${props.user.username}/collection`}>
+                <Link to={`${props.user.username}/collection`} className='flex'>
                     <img src={MyCollectionIcon}></img>
                     <div className={isGoToMyCollectionHovered ? "close-menu-text-active" : "close-menu-text-inactive"}>
-                        <p>go to my collection</p>
+                        <p>Go to my Collection</p>
                     </div>
                 </Link>
             </li>
@@ -78,7 +78,7 @@ const NavBarMenu = (props) => {
                 <Link to={`${props.user.username}/wishlist`}>
                     <img src={MyWishListIcon}></img>
                     <div className={isGoToMyWishListHovered ? "close-menu-text-active" : "close-menu-text-inactive"}>
-                        <p>go to my collection</p>
+                        <p>Go to my Wish List</p>
                     </div>
                 </Link>
             </li>
