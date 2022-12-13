@@ -1,3 +1,16 @@
 .single-search-result-inner-wrapper-flex {
     flex-direction: column;
 }
+.single-search-result-set-info {
+    margin: 1rem 0rem;
+}
+.single-search-result-set-info h2{ 
+    margin-bottom: 0.5rem;
+}
+
+.single-search-result-img {
+    width: 300px;
+    height: 200px;
+    border: "#e2e2e2 solid 1px";
+}
+

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import useAuth from "../../../hooks/useAuth";
 import axios from 'axios';
+import "./AddToCollectionForm.css";
 
 const AddToCollectionForm = (props) => {
     // this is the API key to read data from Rebriable database
@@ -9,10 +10,12 @@ const AddToCollectionForm = (props) => {
     const reference = useRef();
     const [purchaseDate, setPurchaseDate] = useState();
     const [buildCompletionDate, setBuildCompletionDate] = useState();
+    const [isAddedToCollection, setIsAddedToCollection] = useState(false);
 
     const addToCollectionList = async (themeId, purchaseDate, buildCompletionDate) => {
 
-            // get the theme name from the Rebricable api
+
+        // get the theme name from the Rebricable api
         try {
             let response = await axios.get(`https://rebrickable.com/api/v3/lego/themes/${themeId}`, {
                 headers: {
@@ -58,6 +61,7 @@ const AddToCollectionForm = (props) => {
                     Authorization: "Bearer " + token,
                 },
             });
+            setIsAddedToCollection(true)
 
         } catch (error) {
             console.log(error.response.data);
@@ -65,22 +69,30 @@ const AddToCollectionForm = (props) => {
                 alert("duplicated")
             }
             console.error(error.response.status)
-        }
+        } 
 
     }
+
+
     const handleAddToCollectionFormSubmission = (event) => {
         event.preventDefault();
-        addToCollectionList(props.themeId, purchaseDate, buildCompletionDate )
-
+        addToCollectionList(props.themeId, purchaseDate, buildCompletionDate)
     }
+
     return (  
-    <div>
-        <form onSubmit={(event) => handleAddToCollectionFormSubmission(event)}>
-            <label> purchase date</label>
-            <input type='date' onChange={(event) => setPurchaseDate(event.target.value)}></input>
-            <label> build_completion_date</label>
-            <input type='date' onChange={(event) => setBuildCompletionDate(event.target.value)}></input>
-            <button type='submit'>add</button>
+    <div className='add-to-collection-form-wrapper'>
+        <form onSubmit={(event) => handleAddToCollectionFormSubmission(event)} className="add-to-collection-form-flex flex">
+            <div>
+                <p>Purchase date (required)</p>
+                <input type='date' onChange={(event) => setPurchaseDate(event.target.value)} required></input>
+            </div>
+
+            <div>
+                <p>Build completion date (optional)</p>
+                <input type='date' onChange={(event) => setBuildCompletionDate(event.target.value)}></input>
+            </div>
+
+            <button type='submit' className='primary-button' style={{margin:"1rem 0"}}>{!isAddedToCollection ? ("Add to Collection") : ("Added!")}</button>
         </form>
     </div>);
 }
