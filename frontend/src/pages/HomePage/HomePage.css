@@ -4,7 +4,7 @@
     height: 100%;
 }
 .homepage-background-login-user {
-    padding: 3rem 5rem;
+    padding: 3rem 6rem;
 }
 
 .user-sets-info {
@@ -24,5 +24,6 @@
     margin-bottom: 2rem;
 }
 .chart-wrapper-flex {
+    width: 60%;
     justify-content: center;
 }

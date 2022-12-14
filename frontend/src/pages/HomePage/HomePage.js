@@ -71,7 +71,7 @@ const HomePage = () => {
           <div>
             <h2>View number of sets in different Theme</h2>
             <br></br>
-            <div className="flex select-chart-type-wrapper">
+            <div className="select-chart-type-wrapper">
               <p>Select a chart type</p>
               <select value={chartType} onChange={(event) => setChartType(event.target.value)}>
                 <option value={"Bar"}>Bar Chart</option>

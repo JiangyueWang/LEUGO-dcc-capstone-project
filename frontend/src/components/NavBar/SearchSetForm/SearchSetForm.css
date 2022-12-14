@@ -2,6 +2,8 @@
     flex-direction: row;
     justify-content: flex-end;
     background-color: black;
+    height: 50px;
+    background-image: url("../../../assests/whiteBrick.svg");
 }
 select{
     background-color:#F4BF1C;
@@ -14,12 +16,12 @@ select{
 .search-set-button {
     background-color: transparent;
     border: none;
-    padding: 0rem 0.3rem;
+    padding: 0.25rem 0.3rem;
     border-radius: 10px;
 }
 .search-set-button img {
     display: block;
-    padding-top: 3px;
+    padding-top: 2px;
 }
 .search-form input {
     display: block;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import SearchSetForm from "./SearchSetForm/SearchSetForm.jsx";
 import Logo from "../../assests/logo.svg";
@@ -14,9 +14,7 @@ import "./NavBar.css";
 
 const Navbar = () => {
   const { logoutUser, user } = useContext(AuthContext);
-  
   const navigate = useNavigate();
-  
   // defined state variable to capture icons in NavBar click and hover effect
   const [isSearchClicked, setIsSearchClicked] = useState(false);
   const [isSearchHovered, setIsSearchHovered] = useState(false);
@@ -57,7 +55,7 @@ const Navbar = () => {
 
   return (
     <div>
-    <nav className="navBar-wrapper grid"> 
+    <nav className="navBar-wrapper grid" style={user ? ({backgroundImage:`url("../assests/whiteBrick.svg")`}) :  ({background:"black"}) }> 
  
       <div className="logo" onClick={(e) => handleLogoClick(e)}>
         <img src={Logo}></img>
@@ -65,15 +63,16 @@ const Navbar = () => {
 
       <div className="search-set-navBarMenu-wrapper grid">
 
-        <div onClick={(e) => {handleSearchSetClick(e)}} className={isSearchHovered ? "navBar-icon-hovered" : null}
+        <div onClick={(e) => {handleSearchSetClick(e)}}
             onMouseOver={() => setIsSearchHovered(!isSearchHovered)}
             onMouseOut={() => setIsSearchHovered(!isSearchHovered)}
+            className="navBar-search-set-icon"
             >
             <img src={((!isSearchHovered) && (!isSearchClicked)) ? SearchSetIcon : SearchSetIconActived }
                 alt="search set icon"></img> 
         </div>
       
-        <div  onClick={(e) => handleNavBarMenuClick(e)} className={isSearchHovered ? "navBar-icon-hovered" : null}
+        <div  onClick={(e) => handleNavBarMenuClick(e)} 
             onMouseOver={() => setIsNavBarMenuHovered(!isNavBarMenuHovered)}
             onMouseOut={() => setIsNavBarMenuHovered(!isNavBarMenuHovered)}>
           <img src={!isNavBarMenuHovered && !isNavBarMenuClicked ? NavBarMenuIcon : NavBarMenuActived}
