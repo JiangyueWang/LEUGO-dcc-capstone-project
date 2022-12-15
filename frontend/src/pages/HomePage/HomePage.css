@@ -1,8 +1,43 @@
 .homepage-container{
-    background-color: rgba(255, 255, 255, 1);
+    /* background-color: rgba(255, 255, 255, 1); */
     color: black;
     height: 100%;
 }
+
+.hero-section-wrapper {
+    padding: 50px 0;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: rgba(255, 255, 255, 0.9); */
+}
+.home-page-wrapper-black {
+    margin: 0px 50px;
+    background-color: rgba(0, 0, 0, 1);
+}
+.hero-section-images {
+ /* width: 50%; */
+ /* margin-bottom: 1rem; */
+ /* background-color: rgba(255, 255, 255, 0.8); */
+
+}
+
+.u-letter {
+    max-width: 150px;
+    max-height: 200px;
+}
+
+.home-page-section-one {
+    padding-left: 8rem;
+    padding-right: 9rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 100%;
+}
+
+.leugoOnIphone-img {
+    width: 500px;
+    height: 680px;
+}
+
 .homepage-background-login-user {
     padding: 3rem 6rem;
 }

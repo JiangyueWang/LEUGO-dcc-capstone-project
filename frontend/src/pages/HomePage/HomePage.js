@@ -9,8 +9,23 @@ import Minifig from "../../assests/Minifig.svg";
 import SingleBrick from "../../assests/SingleBrick.svg";
 import "./HomePage.css";
 
+import LE from "../../assests/LE.svg";
+import U from "../../assests/U.svg";
+import GO from "../../assests/GO.svg";
+
+import leugoOnIphone from "../../assests/homePageiPhoneImage.png";
+import SearchSetIcon from "../../assests/searchSetInactive.svg";
+import NavBarMenuIcon from "../../assests/navBarMenu.svg";
+
 const HomePage = () => {
   const [user, token] = useAuth();
+
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  
+  function handleMouseMove(event) {
+    const { clientX, clientY } = event;
+    setCursorPosition({ x: clientX, y: clientY });
+  }
 
   // define state variables that are required to store the data from the backend
   const [totalBrickCount, setTotalBrickCount] = useState();
@@ -41,10 +56,13 @@ const HomePage = () => {
 
   useEffect(() => {
     fetchDashboardInfo();
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+
   }, [])
 
   return (
-    <div className="homepage-container">
+    <div className="homepage-container" style={user ? {backgroundColor: "rgba(255, 255, 255, 1)"} : null}>
       {
         user ? 
         (<div className="homepage-background-login-user">
@@ -84,7 +102,53 @@ const HomePage = () => {
               </div>
         </div>
         ) :
-        (<h1>Home Page</h1>)
+        (
+
+          <div className="home-page-wrapper-black">
+
+          
+          <div className="hero-section-wrapper flex">
+
+            <div className="hero-section-images flex">
+              <img src={LE} className="le-letters"></img>
+              {/* <img src={U}></img> */}
+              <img src={U} className="u-letter" style={{width:cursorPosition.x, height:cursorPosition.y}}></img>
+
+              <img src={GO}></img>
+            </div>
+
+            <div className="home-page-section-one flex" style={{paddingTop:`${700-cursorPosition.y*3}px`}}>
+              <div>
+                <h1>LEUGO</h1>
+                <br></br>
+                <h2>
+                  View your lego sets in one-stop shop
+                </h2>
+                <br></br>
+                <br></br>
+                <div>
+                  <div>
+                    <img src={SearchSetIcon}></img>
+                    <p>Search a lego set you are looking for</p>
+                  </div>
+                  <br></br>
+                  <div>
+                    <img src={NavBarMenuIcon}></img>
+                    <p>Sign in to view your personalise lego collection</p>
+                  </div>
+                  
+                </div>
+              </div>
+              <div >
+                <img src={leugoOnIphone} className="leugoOnIphone-img"></img>
+              </div>
+              
+              
+            </div>
+          </div> 
+          
+          </div>
+        )
       }
     </div>
   );

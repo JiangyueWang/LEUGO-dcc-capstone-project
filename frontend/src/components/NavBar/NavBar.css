@@ -3,9 +3,10 @@
   /* background-repeat: repeat-y; */
   /* background-size: contain; */
   padding: 0 2rem;
-  height: 50px;
+  height: 61px;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
+
 }
 .logo img{
   margin-top: 0.3rem;

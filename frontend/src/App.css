@@ -13,10 +13,10 @@ html {
   box-sizing: border-box;
   font-family: 'DM Sans', sans-serif;
   font-size: 62.5%;
-  background-color: black;
   color: white;
   background-image: url("./assests/whiteBrick.svg");
-  line-height: 2rem;
+  background-position: -51px 0;
+
 }
 
 .grid {

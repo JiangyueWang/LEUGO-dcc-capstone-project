@@ -55,7 +55,7 @@ const Navbar = () => {
 
   return (
     <div>
-    <nav className="navBar-wrapper grid" style={user ? ({backgroundImage:`url("../assests/whiteBrick.svg")`}) :  ({background:"black"}) }> 
+    <nav className="navBar-wrapper grid" style={user ? ({backgroundImage:`url("../assests/whiteBrick.svg")`}) :  ({background:"rgba(128, 128, 128, 0.4)"}) }> 
  
       <div className="logo" onClick={(e) => handleLogoClick(e)}>
         <img src={Logo}></img>
