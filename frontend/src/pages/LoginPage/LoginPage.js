@@ -43,7 +43,7 @@ const LoginPage = () => {
 
             <labe><h2>Password:{" "}</h2></labe>
             <input
-            type="text"
+            type="password"
             name="password"
             value={formData.password}
             onChange={handleInputChange}

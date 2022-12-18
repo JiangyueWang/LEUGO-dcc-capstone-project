@@ -51,7 +51,7 @@ const SearchSetForm = (props) => {
             </select>
         </div>
         <div className="search-form-wrapper" >
-            <form className="search-form"onSubmit={(e)=>{handleSearchFormSubmission(e)}}>
+            <form className="search-form" onSubmit={(e)=>{handleSearchFormSubmission(e)}}>
                     <div className='search-btn-input-wrapper flex'>
                     <button type='submit' className='search-set-button'>
                         <img src={SearchIcon}></img>

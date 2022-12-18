@@ -13,7 +13,7 @@ import LE from "../../assests/LE.svg";
 import U from "../../assests/U.svg";
 import GO from "../../assests/GO.svg";
 
-import leugoOnIphone from "../../assests/homePageiPhoneImage.png";
+import leugoOnIphone from "../../assests/homePageiPhoneImage.svg";
 import SearchSetIcon from "../../assests/searchSetInactive.svg";
 import NavBarMenuIcon from "../../assests/navBarMenu.svg";
 
