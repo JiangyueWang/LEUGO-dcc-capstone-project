@@ -90,5 +90,26 @@ h1, h2, p{
         width: 300px;
         height: 380px;
     }
-    
+
+}
+@media only screen and (min-width: 768px) {
+  /* Styles for desktop screens */
+  .hero-section-wrapper{
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 2rem 3rem;
+    justify-content: space-evenly;
+    }
+    .hero-section-one {
+        padding: 0 0 5rem 0;
+    }
+    .hero-section-sub2{
+        padding: 2rem 0 0.5rem 0;
+    }
+    .hero-section-sub2 img{
+        padding: 0rem 1rem 0 0;
+    }
+    .leugoOnIphone-img {
+        width: 500px;
+        height: 580px;
+}
 }
