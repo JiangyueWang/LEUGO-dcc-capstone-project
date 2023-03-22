@@ -66,47 +66,38 @@ h1, h2, p{
     color: black;
 }
 .home-page-wrapper{ 
-    background-color: rgba(255, 255, 255, 0.7);
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+.hero-section-wrapper{
+    padding: 2rem 3rem;
+    max-height: 100%;
+}
+.hero-section-one {
+    padding: 0 0 5rem 0;
+}
+.hero-section-sub2{
+    padding: 2rem 0 0.5rem 0;
+    align-items: center;
+}
+.hero-section-sub2 img{
+    padding: 0rem 1rem 0 0;
 }
 @media only screen and (max-width: 767px) {
     /* styles for screens with a maximum width of 767px, such as smartphones */
     .hero-section-wrapper{
-        background-color: rgba(255, 255, 255, 0.5);
-        padding: 2rem 3rem;
         flex-direction: column;
         align-items: center;
-    }
-    .hero-section-one {
-        padding: 0 0 5rem 0;
-    }
-    .hero-section-sub2{
-        padding: 2rem 0 0.5rem 0;
-        align-items: center;
-    }
-    .hero-section-sub2 img{
-        padding: 0rem 1rem 0 0;
     }
     .leugoOnIphone-img {
         width: 300px;
         height: 380px;
     }
-
 }
 @media only screen and (min-width: 768px) {
   /* Styles for desktop screens */
   .hero-section-wrapper{
-    background-color: rgba(255, 255, 255, 0.5);
-    padding: 2rem 3rem;
-    justify-content: space-evenly;
-    }
-    .hero-section-one {
-        padding: 0 0 5rem 0;
-    }
-    .hero-section-sub2{
-        padding: 2rem 0 0.5rem 0;
-    }
-    .hero-section-sub2 img{
-        padding: 0rem 1rem 0 0;
+        justify-content: space-evenly;
     }
     .leugoOnIphone-img {
         width: 500px;
